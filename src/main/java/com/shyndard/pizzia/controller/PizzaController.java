@@ -11,9 +11,12 @@ import javax.ws.rs.Path;
 import com.shyndard.pizzia.entity.Pizza;
 import com.shyndard.pizzia.service.PizzaService;
 
+import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+
 @Path("/pizzas")
+@Tag(name = "Pizza Resource", description = "Manage pizza resource")
 public class PizzaController {
-    
+
     @Inject
     PizzaService pizzaService;
 
@@ -32,5 +35,5 @@ public class PizzaController {
     public Pizza create(@NotBlank String imgInBase64) {
         return pizzaService.create(imgInBase64);
     }
-    
+
 }
