@@ -11,6 +11,7 @@ public class Pizza {
     
     private UUID id;
     private String imageUrl;
+    private String message;
 
     public Pizza() {
 
