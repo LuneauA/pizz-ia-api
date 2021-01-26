@@ -12,7 +12,8 @@ import com.shyndard.pizzia.entity.PizzaTreatment;
 @ApplicationScoped
 public class PizzaTreatmentService {
 
-	private List<PizzaTreatment> pizzas = new ArrayList<>();
+	// TODO: Store in a database
+	private final List<PizzaTreatment> pizzas = new ArrayList<>();
 
 	public List<PizzaTreatment> getAll() {
 		return pizzas;
@@ -26,8 +27,11 @@ public class PizzaTreatmentService {
 		}
 	}
 
-	public PizzaTreatment create(String imgInBase64) {
+	public PizzaTreatment create(final String imgInBase64) {
 		PizzaTreatment pizza = new PizzaTreatment(UUID.randomUUID());
+		// TODO: Call prediction API
+		// TODO: Store image in S3 bucket
+		// TODO: Save prediction's result in database
 		return pizza;
 	}
 }

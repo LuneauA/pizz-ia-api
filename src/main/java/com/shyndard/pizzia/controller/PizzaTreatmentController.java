@@ -37,7 +37,7 @@ public class PizzaTreatmentController {
 
     @POST
     @Operation(summary = "Create a pizza treatment")
-    public PizzaTreatment create(@Valid PizzaTreatmentCreationDto pizzaCreationDto) {
+    public PizzaTreatment create(@Valid final PizzaTreatmentCreationDto pizzaCreationDto) {
         return pizzaService.create(pizzaCreationDto.getImageBase64());
     }
 
