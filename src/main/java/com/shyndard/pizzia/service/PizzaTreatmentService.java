@@ -7,18 +7,18 @@ import java.util.UUID;
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.WebApplicationException;
 
-import com.shyndard.pizzia.entity.Pizza;
+import com.shyndard.pizzia.entity.PizzaTreatment;
 
 @ApplicationScoped
-public class PizzaService {
+public class PizzaTreatmentService {
 
-	private List<Pizza> pizzas = new ArrayList<>();
+	private List<PizzaTreatment> pizzas = new ArrayList<>();
 
-	public List<Pizza> getAll() {
+	public List<PizzaTreatment> getAll() {
 		return pizzas;
 	}
 
-	public Pizza getLast() {
+	public PizzaTreatment getLast() {
 		if (pizzas.isEmpty()) {
 			throw new WebApplicationException("No data found", 404);
 		} else {
@@ -26,8 +26,8 @@ public class PizzaService {
 		}
 	}
 
-	public Pizza create(String imgInBase64) {
-		Pizza pizza = new Pizza(UUID.randomUUID());
+	public PizzaTreatment create(String imgInBase64) {
+		PizzaTreatment pizza = new PizzaTreatment(UUID.randomUUID());
 		return pizza;
 	}
 }

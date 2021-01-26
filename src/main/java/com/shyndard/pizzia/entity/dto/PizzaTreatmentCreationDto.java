@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PizzaCreationDto {
+public class PizzaTreatmentCreationDto {
     
     @NotBlank
     private String imageBase64;

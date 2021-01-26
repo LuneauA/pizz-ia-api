@@ -7,17 +7,17 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Pizza {
+public class PizzaTreatment {
     
     private UUID id;
     private String imageUrl;
     private String message;
 
-    public Pizza() {
+    public PizzaTreatment() {
 
     }
 
-    public Pizza(UUID id) {
+    public PizzaTreatment(UUID id) {
         this.id = id;
     }
     
