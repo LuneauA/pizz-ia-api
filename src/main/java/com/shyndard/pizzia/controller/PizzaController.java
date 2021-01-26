@@ -3,12 +3,13 @@ package com.shyndard.pizzia.controller;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.validation.constraints.NotBlank;
+import javax.validation.Valid;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 import com.shyndard.pizzia.entity.Pizza;
+import com.shyndard.pizzia.entity.dto.PizzaCreationDto;
 import com.shyndard.pizzia.service.PizzaService;
 
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
@@ -32,8 +33,8 @@ public class PizzaController {
     }
 
     @POST
-    public Pizza create(@NotBlank String imgInBase64) {
-        return pizzaService.create(imgInBase64);
+    public Pizza create(@Valid PizzaCreationDto pizzaCreationDto) {
+        return pizzaService.create(pizzaCreationDto.getImageBase64());
     }
 
 }
