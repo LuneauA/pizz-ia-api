@@ -1,5 +1,6 @@
 package com.shyndard.pizzia.entity;
 
+import java.net.URL;
 import java.util.UUID;
 
 import lombok.Getter;
@@ -10,7 +11,7 @@ import lombok.Setter;
 public class PizzaTreatment {
     
     private UUID id;
-    private String imageUrl;
+    private URL imageUrl;
     private String message;
 
     public PizzaTreatment() {

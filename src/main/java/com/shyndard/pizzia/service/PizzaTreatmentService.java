@@ -1,16 +1,22 @@
 package com.shyndard.pizzia.service;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.WebApplicationException;
 
 import com.shyndard.pizzia.entity.PizzaTreatment;
 
 @ApplicationScoped
 public class PizzaTreatmentService {
+
+	@Inject
+	S3StorageService storageService;
 
 	// TODO: Store in a database
 	private final List<PizzaTreatment> pizzas = new ArrayList<>();
@@ -29,8 +35,14 @@ public class PizzaTreatmentService {
 
 	public PizzaTreatment create(final String imgInBase64) {
 		PizzaTreatment pizza = new PizzaTreatment(UUID.randomUUID());
+		// Store image in S3 bucket
+		Optional<URL> url = storageService.upload(UUID.randomUUID().toString(), imgInBase64);
+		if(url.isPresent()) {
+			pizza.setImageUrl(url.get());
+		} else {
+			throw new WebApplicationException("Cannot upload image to s3", 500);
+		}
 		// TODO: Call prediction API
-		// TODO: Store image in S3 bucket
 		// TODO: Save prediction's result in database
 		return pizza;
 	}
