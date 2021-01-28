@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Observes;
 
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.SdkClientException;
@@ -17,20 +18,33 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
+import io.quarkus.runtime.StartupEvent;
+
 @ApplicationScoped
 public class S3StorageService {
 
-    private String s3Bucket;
     private BasicAWSCredentials awsCreds;
     private AmazonS3 s3Client;
 
-    public S3StorageService() {
-        String s3CredId = System.getenv("S3_CRED_ID");
-        String S3CredSecret = System.getenv("S3_CRED_SECRET");
-        String s3Url = System.getenv("S3_URL");
-        String s3Region = System.getenv("S3_REGION");
-        s3Bucket = System.getenv("S3_BUCKET");
-        awsCreds = new BasicAWSCredentials(s3CredId, S3CredSecret);
+    @ConfigProperty(name = "S3_CRED_ID")
+    String s3CredId;
+
+    @ConfigProperty(name = "S3_CRED_SECRET")
+    String s3CredSecret;
+
+    @ConfigProperty(name = "S3_URL")
+    String s3Url;
+
+    @ConfigProperty(name = "S3_REGION")
+    String s3Region;
+
+    @ConfigProperty(name = "S3_BUCKET")
+    String s3Bucket;
+
+    public void onStart(@Observes StartupEvent ev) { 
+        awsCreds = new BasicAWSCredentials(s3CredId, s3CredSecret);
         s3Client = AmazonS3ClientBuilder.standard()
                 .withEndpointConfiguration(new EndpointConfiguration(s3Url, s3Region))
                 .withCredentials(new AWSStaticCredentialsProvider(awsCreds)).build();

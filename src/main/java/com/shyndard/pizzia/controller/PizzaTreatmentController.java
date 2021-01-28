@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import com.shyndard.pizzia.entity.PizzaTreatment;
 import com.shyndard.pizzia.entity.dto.PizzaTreatmentCountDto;
@@ -17,6 +20,8 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 @Path("/pizza-treatment")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 @Tag(name = "Pizza treatment resource", description = "Manage pizza treatment resource")
 public class PizzaTreatmentController {
 

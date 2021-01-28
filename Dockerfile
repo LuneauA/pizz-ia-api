@@ -7,7 +7,7 @@ FROM shyndard/graalvm-native-build:java11-maven363 AS build
 
 WORKDIR /build/
 COPY . .
-RUN mvn package -Pnative
+RUN ./mvnw package -Pnative
 
 ######################
 # CONFIGURATION STEP #
