@@ -33,6 +33,18 @@ public class PizzaTreatmentService {
 		}
 	}
 
+	public int getTotal() {
+		return 0;
+	}
+
+	public int getTotalSuccess() {
+		return 0;
+	}
+
+	public int getTotalFailed() {
+		return 0;
+	}
+
 	public PizzaTreatment create(final String imgInBase64) {
 		PizzaTreatment pizza = new PizzaTreatment(UUID.randomUUID());
 		// Store image in S3 bucket

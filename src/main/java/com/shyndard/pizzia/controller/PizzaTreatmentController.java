@@ -9,6 +9,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 import com.shyndard.pizzia.entity.PizzaTreatment;
+import com.shyndard.pizzia.entity.dto.PizzaTreatmentCountDto;
 import com.shyndard.pizzia.entity.dto.PizzaTreatmentCreationDto;
 import com.shyndard.pizzia.service.PizzaTreatmentService;
 
@@ -35,10 +36,32 @@ public class PizzaTreatmentController {
         return pizzaService.getLast();
     }
 
+    @GET
+    @Operation(summary = "Find total pizza treatment")
+    @Path("/total")
+    public PizzaTreatmentCountDto getTotal() {
+        return new PizzaTreatmentCountDto(pizzaService.getTotal());
+    }
+
+    @GET
+    @Operation(summary = "Find total success pizza treatment")
+    @Path("/success")
+    public PizzaTreatmentCountDto getSuccess() {
+        return new PizzaTreatmentCountDto(pizzaService.getTotalSuccess());
+    }
+
+    @GET
+    @Operation(summary = "Find total success pizza treatment")
+    @Path("/failed")
+    public PizzaTreatmentCountDto getFailed() {
+        return new PizzaTreatmentCountDto(pizzaService.getTotalFailed());
+    }
+
     @POST
     @Operation(summary = "Create a pizza treatment")
     public PizzaTreatment create(@Valid final PizzaTreatmentCreationDto pizzaCreationDto) {
         return pizzaService.create(pizzaCreationDto.getImageBase64());
     }
+    
 
 }
