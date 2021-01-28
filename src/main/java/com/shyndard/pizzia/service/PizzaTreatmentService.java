@@ -55,6 +55,7 @@ public class PizzaTreatmentService {
 			throw new WebApplicationException("Cannot upload image to s3", 500);
 		}
 		// TODO: Call prediction API
+		pizza.setSuccess(0);
 		// TODO: Save prediction's result in database
 		return pizza;
 	}

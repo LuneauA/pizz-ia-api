@@ -12,6 +12,7 @@ public class PizzaTreatment {
     
     private UUID id;
     private URL imageUrl;
+    private int success;
     private String message;
 
     public PizzaTreatment() {
