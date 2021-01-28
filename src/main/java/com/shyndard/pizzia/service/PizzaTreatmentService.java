@@ -21,7 +21,8 @@ public class PizzaTreatmentService {
 	@Inject
 	S3StorageService storageService;
 
-	List<String> responses = new ArrayList<>(Arrays.asList("Il manque de la sauce", "Pas assez de condiments", "Taille incorrecte"));
+	List<String> responses = new ArrayList<>(
+			Arrays.asList("Il manque de la sauce", "Pas assez de condiments", "Taille incorrecte"));
 
 	// TODO: Store in a database
 	private final List<PizzaTreatment> pizzas = new ArrayList<>();
@@ -61,7 +62,7 @@ public class PizzaTreatmentService {
 		}
 		// Fake call to IA
 		pizza.setSuccess(ThreadLocalRandom.current().nextInt(0, 2));
-		if(pizza.getSuccess()== 0) {
+		if (pizza.getSuccess() == 0) {
 			pizza.setMessage(responses.get(ThreadLocalRandom.current().nextInt(0, responses.size())));
 		} else {
 			pizza.setMessage("OK =)");

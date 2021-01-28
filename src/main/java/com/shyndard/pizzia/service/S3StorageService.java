@@ -25,11 +25,11 @@ public class S3StorageService {
     private AmazonS3 s3Client;
 
     public S3StorageService() {
-        String s3CredId = System.getProperty("S3_CRED_ID");
-        String S3CredSecret = System.getProperty("S3_CRED_SECRET");
-        String s3Url = System.getProperty("S3_URL");
-        String s3Region = System.getProperty("S3_REGION");
-        s3Bucket = System.getProperty("S3_BUCKET");
+        String s3CredId = System.getenv("S3_CRED_ID");
+        String S3CredSecret = System.getenv("S3_CRED_SECRET");
+        String s3Url = System.getenv("S3_URL");
+        String s3Region = System.getenv("S3_REGION");
+        s3Bucket = System.getenv("S3_BUCKET");
         awsCreds = new BasicAWSCredentials(s3CredId, S3CredSecret);
         s3Client = AmazonS3ClientBuilder.standard()
                 .withEndpointConfiguration(new EndpointConfiguration(s3Url, s3Region))
