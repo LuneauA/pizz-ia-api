@@ -9,6 +9,19 @@ When creating a pizza :
 - save everything in a database
 - return results
 
+## Explanation
+
+Here is a deployment diagram with explanations of the process.
+
+![alt text](https://zupimages.net/up/21/05/fdy0.png)
+
+1. Take a picture of a pizza
+2. Sending the image to an API hosted in the cloud.
+3. The image is saved in an s3 bucket.
+4. Informations are saved in a database. 
+5. Raspberry pulls informations, turn on the red led if successful otherwise turn on the green led and show message on screen.
+6. Call API on PI zero to inform that the next pizza is ready to be photographed.
+
 ## Install
 
 ```sh
