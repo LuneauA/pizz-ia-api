@@ -102,4 +102,16 @@ public class PizzaTreatmentDao {
             e.printStackTrace();
         }
     }
+
+    public int deleteAll() {
+        int count = 0;
+        String sql = "DELETE FROM pizza_treatment";
+        try (Connection connection = defaultDataSource.getConnection();
+                PreparedStatement pst = connection.prepareStatement(sql)) {
+            count = pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 }

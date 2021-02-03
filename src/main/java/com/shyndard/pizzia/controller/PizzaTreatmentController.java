@@ -68,4 +68,12 @@ public class PizzaTreatmentController {
     public PizzaTreatment create(@Valid final PizzaTreatmentCreationDto pizzaCreationDto) {
         return pizzaService.create(pizzaCreationDto.getImageBase64());
     }
+
+    @GET
+    @POST
+    @Operation(summary = "Delete all treatment")
+    @Path("/delete-all")
+    public int deleteAll(@Valid final PizzaTreatmentCreationDto pizzaCreationDto) {
+        return pizzaService.deleteAll();
+    }
 }

@@ -68,4 +68,8 @@ public class PizzaTreatmentService {
 		pizzaTreatmentDao.create(pizza.getSuccess(), pizza.getImageUrl(), pizza.getMessage());
 		return pizza;
 	}
+
+	public int deleteAll() {
+		return pizzaTreatmentDao.deleteAll();
+	}
 }
