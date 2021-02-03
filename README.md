@@ -1,6 +1,14 @@
 # pizzia api
 ![Version](https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000)
 
+> This API manages the pizzas processing.
+
+When creating a pizza :
+- base64 image is uploaded to a S3 bucket
+- fake an IA with message and success result
+- save everything in a database
+- return results
+
 ## Install
 
 ```sh
@@ -45,6 +53,19 @@ The application is runnable using `java -jar target/*-SNAPSHOT-runner.jar`.
 ./mvnw package -Pnative
 ```
 ### Without graalvm installed
+
+```shell script
+./mvnw package -Pnative -Dquarkus.native.container-build=true
+```
+
+## Using docker
+
+### Create image
+
+```shell script
+docker build -t sample-quarkus-restapi .
+```
+### Run image
 
 ```shell script
 ./mvnw package -Pnative -Dquarkus.native.container-build=true
