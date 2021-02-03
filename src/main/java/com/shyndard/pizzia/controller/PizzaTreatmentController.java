@@ -1,6 +1,7 @@
 package com.shyndard.pizzia.controller;
 
-import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -30,14 +31,14 @@ public class PizzaTreatmentController {
 
     @GET
     @Operation(summary = "Find all pizza treatments")
-    public List<PizzaTreatment> getAll() {
+    public Set<PizzaTreatment> getAll() {
         return pizzaService.getAll();
     }
 
     @GET
     @Operation(summary = "Find last pizza treatment")
     @Path("/last")
-    public PizzaTreatment getLast() {
+    public Optional<PizzaTreatment> getLast() {
         return pizzaService.getLast();
     }
 
@@ -67,6 +68,4 @@ public class PizzaTreatmentController {
     public PizzaTreatment create(@Valid final PizzaTreatmentCreationDto pizzaCreationDto) {
         return pizzaService.create(pizzaCreationDto.getImageBase64());
     }
-    
-
 }
