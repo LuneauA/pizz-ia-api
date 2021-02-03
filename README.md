@@ -63,10 +63,25 @@ The application is runnable using `java -jar target/*-SNAPSHOT-runner.jar`.
 ### Create image
 
 ```shell script
-docker build -t sample-quarkus-restapi .
+docker build -t pizzia-api .
 ```
-### Run image
+### Run image (don't forget env var)
 
 ```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
+docker run -i --rm -p 8080:8080 pizzia-api
 ```
+
+## Environment variables
+
+| NAME           | DESCRIPTION          |
+|----------------|----------------------|
+| S3_CRED_ID     | S3 credential id     |
+| S3_CRED_SECRET | S3 credential secret |
+| S3_URL         | S3 url               |
+| S3_REGION      | S3 region            |
+| S3_BUCKET      | S3 bucket            |
+| DB_USERNAME    | Database username    |
+| DB_PASSWORD    | Database password    |
+| DB_HOSTNAME    | Database hostname    |
+| DB_PORT        | Database port        |
+| DB_NAME        | Database name        |
