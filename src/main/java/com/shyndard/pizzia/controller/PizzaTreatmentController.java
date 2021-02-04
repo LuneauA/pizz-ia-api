@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -76,11 +77,10 @@ public class PizzaTreatmentController {
         return pizzaService.create(pizzaCreationDto.getImageBase64());
     }
 
-    @GET
-    @POST
+    @DELETE
     @Operation(summary = "Delete all treatment")
     @Path("/delete-all")
-    public int deleteAll(@Valid final PizzaTreatmentCreationDto pizzaCreationDto) {
+    public int deleteAll() {
         return pizzaService.deleteAll();
     }
 }
