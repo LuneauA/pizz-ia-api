@@ -13,14 +13,15 @@ When creating a pizza :
 
 Here is a deployment diagram with explanations of the process.
 
-![alt text](https://zupimages.net/up/21/05/fdy0.png)
+![alt text](https://zupimages.net/up/21/05/klcq.png)
 
 1. Take a picture of a pizza
 2. Sending the image to an API hosted in the cloud.
 3. The image is saved in an s3 bucket.
-4. Informations are saved in a database. 
-5. Raspberry pulls informations, turn on the red led if successful otherwise turn on the green led and show message on screen.
-6. Call API on PI zero to inform that the next pizza is ready to be photographed.
+4. Send image to prediction API and get an answer if pizza is OK and if not so what is missing.
+5. Informations are saved in a database.
+6. Raspberry pulls informations, turn on the red led if successful otherwise turn on the green led and show message on screen.
+7. Call API on PI zero to inform that the next pizza is ready to be photographed.
 
 ## Install
 
