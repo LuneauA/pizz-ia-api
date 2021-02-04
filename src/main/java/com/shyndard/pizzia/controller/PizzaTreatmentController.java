@@ -43,6 +43,13 @@ public class PizzaTreatmentController {
     }
 
     @GET
+    @Operation(summary = "Find last 10 pizza treatments")
+    @Path("/last-10")
+    public Set<PizzaTreatment> getLast10() {
+        return pizzaService.getLast10();
+    }
+
+    @GET
     @Operation(summary = "Find total pizza treatment")
     @Path("/total")
     public PizzaTreatmentCountDto getTotal() {

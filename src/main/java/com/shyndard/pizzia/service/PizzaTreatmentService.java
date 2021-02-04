@@ -72,4 +72,8 @@ public class PizzaTreatmentService {
 	public int deleteAll() {
 		return pizzaTreatmentDao.deleteAll();
 	}
+
+	public Set<PizzaTreatment> getLast10() {
+		return pizzaTreatmentDao.findLast10();
+	}
 }

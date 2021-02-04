@@ -114,4 +114,23 @@ public class PizzaTreatmentDao {
         }
         return count;
     }
+
+    public Set<PizzaTreatment> findLast10() {
+        Set<PizzaTreatment> pizzaTreatmentList = new HashSet<>();
+        try (Connection connection = defaultDataSource.getConnection(); Statement stmt = connection.createStatement()) {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM pizza_treatment ORDER BY creation_date DESC LIMIT 10");
+            while (rs.next()) {
+                PizzaTreatment instance = new PizzaTreatment();
+                instance.setId(rs.getObject("id", UUID.class));
+                instance.setImageUrl(rs.getString("image_url"));
+                instance.setSuccess(rs.getInt("success"));
+                instance.setMessage(rs.getString("message"));
+                instance.setCreatedAt(rs.getTimestamp("creation_date"));
+                pizzaTreatmentList.add(instance);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pizzaTreatmentList;
+    }
 }
